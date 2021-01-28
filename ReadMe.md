@@ -75,6 +75,9 @@ parser.add_argument('--logdir', type=str, default=LOGDIR)
  - Ubuntu 18.04
  - Tensorflow 1.4.0
  - Python 3.6
+ - ffmpeg
+ - llvm 10
+ - librosa
 
  - Installed Package
  -- absl-py (0.11.0)
