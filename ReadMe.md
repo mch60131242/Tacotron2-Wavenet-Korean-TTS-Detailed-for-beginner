@@ -47,6 +47,8 @@ parser.add_argument('--data_paths', default='D:\\Tacotron2\\data\\moon')
 - train 후, 음성을 생성하려면 다음과 같이 하면 된다. '--num_speaker', '--speaker_id'는 잘 지정되어야 한다.
 > python synthesizer.py --load_path logdir-tacotron2/moon+son_2019-02-27_00-21-42 --num_speakers 2 --speaker_id 0 --text "오스트랄로피테쿠스 아파렌시스는 멸종된 사람족 종으로, 현재에는 뼈 화석이 발견되어 있다." 
 
+- run.py 파일을 수정해서 tacotron으로 만든 파일을 서비스 할 수 있다. run.py안에는 하드코딩 되어 있으니 이를 적절히 수정한다.
+> stream_dir 뒷 부분과 아래의 synthesizer.load 부분을 수정할 것.
 
 
 ### Wavenet Vocoder Training
@@ -78,6 +80,8 @@ parser.add_argument('--logdir', type=str, default=LOGDIR)
  - ffmpeg
  - llvm 10
  - librosa
+ - requests
+ > pip install -r requre.txt
 
  - Installed Package
  -- absl-py (0.11.0)
