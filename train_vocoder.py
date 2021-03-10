@@ -142,7 +142,7 @@ def main():
     parser.add_argument('--checkpoint_every', type=int, default=CHECKPOINT_EVERY,help='How many steps to save each checkpoint after. Default: ' + str(CHECKPOINT_EVERY) + '.')
     
     
-    parser.add_argument('--eval_every', type=int, default=2,help='Steps between eval on test data')
+    parser.add_argument('--eval_every', type=int, default=1000,help='Steps between eval on test data')
     
    
     
