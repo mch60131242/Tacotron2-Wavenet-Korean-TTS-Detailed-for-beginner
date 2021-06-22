@@ -3,6 +3,9 @@ python preprocess.py --num_workers 10 --name son --in_dir .\datasets\son --out_d
 
 python preprocess.py --num_workers 10 --name moon --in_dir .\datasets\moon --out_dir .\data\moon
 
+python3 preprocess.py --num_workers 10 --name monika --in_dir ./datasets/monika --out_dir ./data/monika
+
+python3 preprocess.py --num_workers 10 --name kss --in_dir ./datasets/kss --out_dir ./data/kss
 
 python train_tacotron2.py
 

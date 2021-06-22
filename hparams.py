@@ -15,7 +15,7 @@ hparams = tf.contrib.training.HParams(
     use_lws = False,
     
     # Audio
-    sample_rate = 24000,  # 
+    sample_rate = 44100,  # 
     
     # shift can be specified by either hop_size(우선) or frame_shift_ms
     hop_size = 300,             # frame_shift_ms = 12.5ms
@@ -52,8 +52,9 @@ hparams = tf.contrib.training.HParams(
     
 
     l2_regularization_strength = 0,  # Coefficient in the L2 regularization.
-    sample_size = 9000,              # Concatenate and cut audio samples to this many samples
-    silence_threshold = 0,             # Volume threshold below which to trim the start and the end from the training set samples. e.g. 2
+    sample_size = 9000,
+    #sample_size = 4500,              # Concatenate and cut audio samples to this many samples
+    silence_threshold = 1,             # Volume threshold below which to trim the start and the end from the training set samples. e.g. 2 2021.06.21 0->1 이러면 앞뒤 무음 부분 삭제함
 
     
     filter_width = 3,
@@ -77,9 +78,9 @@ hparams = tf.contrib.training.HParams(
 
 
     # wavenet training hp
-    wavenet_batch_size = 2,            # 16--> OOM. wavenet은 batch_size가 고정되어야 한다.
+    wavenet_batch_size = 4,            # 16--> OOM. wavenet은 batch_size가 고정되어야 한다.
     store_metadata = False,
-    num_steps = 1000000,                # Number of training steps
+    num_steps = 1200000,                # Number of training steps
 
     #Learning rate schedule
     wavenet_learning_rate = 1e-3, #wavenet initial learning rate
@@ -125,8 +126,8 @@ hparams = tf.contrib.training.HParams(
     
     initial_data_greedy = True,
     initial_phase_step = 8000,   # 여기서 지정한 step 이전에는 data_dirs의 각각의 디렉토리에 대하여 같은 수의 example을 만들고, 이후, weght 비듈에 따라 ... 즉, 아래의 'main_data_greedy_factor'의 영향을 받는다.
-    main_data_greedy_factor = 0,
-    main_data = [''],    # 이곳에 있는 directory 속에 있는 data는 가중치를 'main_data_greedy_factor' 만큼 더 준다.
+    main_data_greedy_factor = 0.5,
+    main_data = ['./data/monika'],    # 이곳에 있는 directory 속에 있는 data는 가중치를 'main_data_greedy_factor' 만큼 더 준다. monika 0.5더 주기
     prioritize_loss = False,    
     
 
@@ -205,7 +206,7 @@ hparams = tf.contrib.training.HParams(
     max_n_frame = 200*5,
     skip_inadequate = False,
  
-    griffin_lim_iters = 60,
+    griffin_lim_iters = 100, #기존 60에서 100으로 수정
     power = 1.5, 
  
 )
