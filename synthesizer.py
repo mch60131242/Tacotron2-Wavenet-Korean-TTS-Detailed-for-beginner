@@ -342,7 +342,7 @@ if __name__ == "__main__":
     synthesizer.load(config.load_path, config.num_speakers, config.checkpoint_step,inference_prenet_dropout=False)
 
     audio = synthesizer.synthesize(texts=[config.text],base_path=config.sample_path,speaker_ids=[config.speaker_id],
-                                   attention_trim=True,base_alignment_path=config.base_alignment_path,isKorean=config.is_korean)[0]
+                                   attention_trim=False,base_alignment_path=config.base_alignment_path,isKorean=config.is_korean)[0]
 
 
 

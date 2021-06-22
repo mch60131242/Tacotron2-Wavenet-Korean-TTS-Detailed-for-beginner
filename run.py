@@ -72,8 +72,12 @@ class SynthesisResource:
     if not req.params.get('text'):
       raise falcon.HTTPBadRequest()
     #res.data = synthesizer.synthesize(req.params.get('text'))
+<<<<<<< HEAD
     text = req.params.get('text')#!?를 붙여야 뭔가 감정이 실린 Monika가 나옴 이유는 모름
     stream_dir = synthesizer.synthesize(texts=[text],base_path="logdir-tacotron2/generate" ,speaker_ids=[0], attention_trim=False,base_alignment_path=None,isKorean=True)[0]
+=======
+    stream_dir = synthesizer.synthesize(texts=[req.params.get('text')],base_path="logdir-tacotron2/generate" ,speaker_ids=[0], attention_trim=False,base_alignment_path=None,isKorean=True)[0]
+>>>>>>> 0431c78954f9123a6f2c22e725948d36b8304811
     print(stream_dir)
     fvoice = open(stream_dir,'rb')
     res.data = fvoice.read()
