@@ -123,13 +123,13 @@ def main():
     
     parser = argparse.ArgumentParser(description='WaveNet example network')
     
-    DATA_DIRECTORY =  'D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\moon,D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\son'
+    DATA_DIRECTORY = '/home/kjm/Tacotron2-Wavenet-Korean-TTS/data/monika,/home/kjm/Tacotron2-Wavenet-Korean-TTS/data/kss'
     #DATA_DIRECTORY =  'D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\moon'
     parser.add_argument('--data_dir', type=str, default=DATA_DIRECTORY, help='The directory containing the VCTK corpus.')
 
 
     #LOGDIR = None
-    LOGDIR = './/logdir-wavenet//train//2019-03-27T20-27-18'
+    LOGDIR = './logdir-wavenet/train/2021-03-10T02-58-23'
 
     parser.add_argument('--logdir', type=str, default=LOGDIR,help='Directory in which to store the logging information for TensorBoard. If the model already exists, it will restore the state and will continue training. Cannot use with --logdir_root and --restore_from.')
     
@@ -142,7 +142,7 @@ def main():
     parser.add_argument('--checkpoint_every', type=int, default=CHECKPOINT_EVERY,help='How many steps to save each checkpoint after. Default: ' + str(CHECKPOINT_EVERY) + '.')
     
     
-    parser.add_argument('--eval_every', type=int, default=2,help='Steps between eval on test data')
+    parser.add_argument('--eval_every', type=int, default=1000,help='Steps between eval on test data')
     
    
     
