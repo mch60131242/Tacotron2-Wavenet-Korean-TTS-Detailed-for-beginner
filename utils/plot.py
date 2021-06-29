@@ -11,10 +11,14 @@ matplotlib.use('Agg')
 
 #font_manager._rebuild()  <---- 1번만 해주면 됨
 
-font_fname = './/utils//NanumBarunGothic.ttf'
-font_name = font_manager.FontProperties(fname=font_fname).get_name()
-matplotlib.rc('font', family="NanumBarunGothic")
+#font_fname = './/utils//NanumBarunGothic.ttf'
+#font_name = font_manager.FontProperties(fname=font_fname).get_name()
+#matplotlib.rc('font', family="NanumBarunGothic")
 
+matplotlib.font_manager._rebuild()
+font_path = './utils/NanumGothic.ttf'
+font_name = fm.FontProperties(fname=font_path).get_name()
+matplotlib.rc('font', family=font_name, size=7)
 
 import matplotlib.pyplot as plt
 

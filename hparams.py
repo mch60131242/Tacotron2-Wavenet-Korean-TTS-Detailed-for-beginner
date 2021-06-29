@@ -126,9 +126,9 @@ hparams = tf.contrib.training.HParams(
     
     initial_data_greedy = True,
     initial_phase_step = 8000,   # 여기서 지정한 step 이전에는 data_dirs의 각각의 디렉토리에 대하여 같은 수의 example을 만들고, 이후, weght 비듈에 따라 ... 즉, 아래의 'main_data_greedy_factor'의 영향을 받는다.
-    main_data_greedy_factor = 0.5,
+    main_data_greedy_factor = 0.8,
     main_data = ['./data/monika'],    # 이곳에 있는 directory 속에 있는 data는 가중치를 'main_data_greedy_factor' 만큼 더 준다. monika 0.5더 주기
-    prioritize_loss = False,    
+    prioritize_loss = True,    
     
 
     # Model
@@ -138,7 +138,7 @@ hparams = tf.contrib.training.HParams(
     embedding_size = 512,    # 'ᄀ', 'ᄂ', 'ᅡ' 에 대한 embedding dim
     dropout_prob = 0.5,
 
-    reduction_factor = 2,  # reduction_factor가 적으면 더 많은 iteration이 필요하므로, 더 많은 메모리가 필요하다.
+    reduction_factor = 5,  # reduction_factor가 적으면 더 많은 iteration이 필요하므로, 더 많은 메모리가 필요하다.
     
     # Encoder
     enc_conv_num_layers = 3,
