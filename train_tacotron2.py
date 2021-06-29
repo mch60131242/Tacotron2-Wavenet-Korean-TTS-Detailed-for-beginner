@@ -246,9 +246,9 @@ def main():
     #parser.add_argument('--data_paths', default='D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\small1,D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\small2')
     
     
-    parser.add_argument('--load_path', default=None)
+    #parser.add_argument('--load_path', default=None)
     # 아래의 'initialize_path'보다 우선 적용
-    #parser.add_argument('--load_path', default='logdir-tacotron2/monika+kss')
+    parser.add_argument('--load_path', default='logdir-tacotron2/monika+kss_2021-06-28_05-45-18')
     
     
     parser.add_argument('--initialize_path', default=None)   # ckpt로 부터 model을 restore하지만, global step은 0에서 시작
