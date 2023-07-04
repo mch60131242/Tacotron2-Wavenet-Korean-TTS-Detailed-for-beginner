@@ -1,6 +1,8 @@
 # Multi-Speaker Tocotron2 + Wavenet Vocoder + Korean TTS
 Tacotron2 모델과 Wavenet Vocoder를 결합하여  한국어 TTS구현하는 project입니다.
 Tacotron2 모델을 Multi-Speaker모델로 확장했습니다.
+Tacotron2 모델을 통해 기본적으로 음성을 생성하는 것이 가능합니다. 이후에 Vocoder를 통해 음성을 더욱 자연스럽게 생성이 가능합니다.
+
 
 
 Based on 
@@ -8,6 +10,7 @@ Based on
 - https://github.com/carpedm20/multi-speaker-tacotron-tensorflow
 - https://github.com/Rayhane-mamah/Tacotron-2
 - https://github.com/hccho2/Tacotron-Wavenet-Vocoder
+- https://github.com/MoorDev/Tacotron2-Wavenet-Korean-TTS
 
 
 ## Tacotron 2
@@ -22,10 +25,11 @@ Based on
 ## 단계별 실행
 
 ### 실행 순서
-- Data 생성: 한국어 data의 생성은 이전 [repo](https://github.com/hccho2/Tacotron-Wavenet-Vocoder) 참고하시면 됩니다.
+- Data 생성: 한국어 data의 생성은 이전 [repo](https://github.com/hccho2/Tacotron-Wavenet-Vocoder) 참고하시면 됩니다.- 이부분을 통해 데이터를 어떻게 구성하고
+Json파일을 어떻게 구성해야하는지 확인하면 됩니다.
 - 생성된 Data는 아래의 'data_paths'에 지정하면 된다.
 - -Data의 형식은 json 파일에 "file_path : "텍스트내용"의 형태로 만들면된다.
-- tacotron training 후, synthesize.py로 test.
+- tacotron training 후, synthesize.py로 test하면 됩니다..
 - wavenet training 후, generate.py로 test(tacotron이 만들지 않은 mel spectrogram으로 test할 수도 있고, tacotron이 만든 mel spectrogram을 사용할 수도 있다.)
 - 2개 모델 모두 train 후, tacotron에서 생성한 mel spectrogram을 wavent에 local condition으로 넣어 test하면 된다.
 
@@ -34,11 +38,13 @@ Based on
 - train_tacotron2.py 내에서 '--data_paths'를 지정한 후, train할 수 있다. data_path는 여러개의 데이터 디렉토리를 지정할 수 있습니다.
 ```
 parser.add_argument('--data_paths', default='.\\data\\moon,.\\data\\son')
+Data_paths를 .py파일을 수정하거나 터미널에서 실행시에 직접 전달하기를 통해 설정해주면 됩니다.
 ```
 - train을 이어서 계속하는 경우에는 '--load_path'를 지정해 주면 된다.
 ```
 parser.add_argument('--load_path', default='logdir-tacotron2/moon+son_2019-02-27_00-21-42')
 -train.py에 기본적으로 None아니면 작동되지않기떄문에 들어가서 처음 실행시 default=None으로 지정해주어야 한다.
+-기본적으로는 None으로 지정되어 있으며 이것은 load 하지않고 처음부터 "다시"학습을 시작하는 것을 의미합니다.
 ```
 
 - model_type은 'single' 또는 ' multi-speaker'로 지정할 수 있다. speaker가 1명 일 때는, hparams.py의 model_type = 'single'로 하고 train_tacotron2.py 내에서 '--data_paths'를 1개만 넣어주면 된다.
@@ -73,10 +79,9 @@ parser.add_argument('--logdir', type=str, default=LOGDIR)
 
 ### Result
 - Tacotron의 batch_size = 32, Wavenet의 batch_size=8. 
-- Tacotron은 step 100K, Wavenet은 177K 만큼 train.
-- samples 디렉토리에는 생성된 wav파일이 있다.
-- Griffin-Lim으로 생성된 것과 Wavenet Vocoder로 생성된 sample이 있다.
-- Wavenet으로 생성된 음성은 train 부족으로 잡음이 섞여있다.
+- Tacotron은 step 50K, Wavenet은 60K 만큼 train.
+
+
 
 # Requirement
  - Ubuntu 18.04
